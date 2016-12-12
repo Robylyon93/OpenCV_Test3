@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    Mat image;
+    private Mat image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d("OpenCV", "OpenCV library found inside package. Using it!");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
-
-
 
     }
 }

@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">OpenCV_Test3</string>
+    <string name="app_name">Arctic Photo Editor</string>
+    <string name="opencamera_btn">Open Camera</string>
+    <string name="opengallery_btn">Open Gallery</string>
 </resources>

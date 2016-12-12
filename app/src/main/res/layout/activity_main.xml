@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,17 +12,22 @@
     tools:context="bicoccalab.opencv_test3.MainActivity">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test click"
-        android:onClick="clickTest"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/opencamera_btn"
+        android:drawableStart="@drawable/img_camera_small"
+        android:drawablePadding="10sp"
+        android:text="@string/opencamera_btn"
+        android:gravity="start|center_vertical"
+        android:layout_height="0dp" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/opengallery_btn"
+        android:drawableStart="@drawable/img_gallery_small"
+        android:drawablePadding="10sp"
+        android:text="@string/opengallery_btn"
+        android:gravity="start|center"
+        android:layout_height="0dp" />
 </LinearLayout>
