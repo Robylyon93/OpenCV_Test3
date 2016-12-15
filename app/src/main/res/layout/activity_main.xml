@@ -16,9 +16,8 @@
         android:layout_weight="1"
         android:id="@+id/opencamera_btn"
         android:drawableStart="@drawable/img_camera_small"
-        android:drawablePadding="10sp"
         android:text="@string/opencamera_btn"
-        android:gravity="start|center_vertical"
+        android:gravity="center_vertical"
         android:layout_height="0dp"
         android:onClick="takePicture"/>
 
@@ -27,9 +26,8 @@
         android:layout_weight="1"
         android:id="@+id/opengallery_btn"
         android:drawableStart="@drawable/img_gallery_small"
-        android:drawablePadding="10sp"
         android:text="@string/opengallery_btn"
-        android:gravity="start|center"
+        android:gravity="center_vertical"
         android:layout_height="0dp"
         android:onClick="pickPicture"/>
 </LinearLayout>

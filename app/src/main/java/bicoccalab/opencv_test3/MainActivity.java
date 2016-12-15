@@ -29,8 +29,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     Button takePictureButton;
-    private ImageView imageView;
-    private Uri file;
+    private Uri fileUri;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 case LoaderCallbackInterface.SUCCESS:
                 {
                     Log.i("OpenCV", "OpenCV loaded successfully");
-                    image=new Mat();
                 } break;
                 default:
                 {
@@ -48,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-
-    private Mat image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int TAKE_PIC = 100;
     public void takePicture(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        file = Uri.fromFile(getOutputMediaFile());
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
+        fileUri = Uri.fromFile(getOutputMediaFile());
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
         startActivityForResult(intent, TAKE_PIC);
     }
 
@@ -96,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == TAKE_PIC) {
             if (resultCode == RESULT_OK) {
-                imageView.setImageURI(file);
+                //imageView.setImageURI(file);
             }
         }
         else if (requestCode == PICK_PIC) {
