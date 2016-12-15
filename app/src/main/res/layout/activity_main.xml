@@ -19,7 +19,8 @@
         android:drawablePadding="10sp"
         android:text="@string/opencamera_btn"
         android:gravity="start|center_vertical"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:onClick="takePicture"/>
 
     <Button
         android:layout_width="match_parent"
@@ -29,5 +30,6 @@
         android:drawablePadding="10sp"
         android:text="@string/opengallery_btn"
         android:gravity="start|center"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:onClick="pickPicture"/>
 </LinearLayout>
