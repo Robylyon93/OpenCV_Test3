@@ -19,7 +19,7 @@
         android:text="@string/opencamera_btn"
         android:gravity="center_vertical"
         android:layout_height="0dp"
-        android:onClick="takePicture"/>
+        android:onClick="openCamera"/>
 
     <Button
         android:layout_width="match_parent"
@@ -29,5 +29,5 @@
         android:text="@string/opengallery_btn"
         android:gravity="center_vertical"
         android:layout_height="0dp"
-        android:onClick="pickPicture"/>
+        android:onClick="openGallery"/>
 </LinearLayout>
