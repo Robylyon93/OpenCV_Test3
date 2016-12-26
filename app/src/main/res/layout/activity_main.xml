@@ -16,10 +16,10 @@
         android:layout_weight="1"
         android:id="@+id/opencamera_btn"
         android:drawableStart="@drawable/img_camera_small"
-        android:text="@string/opencamera_btn"
         android:gravity="center_vertical"
         android:layout_height="0dp"
-        android:onClick="openCamera"/>
+        android:onClick="openCamera"
+        android:text="@string/opencamera_btn" />
 
     <Button
         android:layout_width="match_parent"
