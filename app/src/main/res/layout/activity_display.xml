@@ -19,7 +19,7 @@
         android:layout_weight="2.7"
         android:id="@+id/imageViewDisplay"
         android:scaleType="fitCenter"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/background_dark" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,14 +67,17 @@
 
             <Button
                 android:text="bottone1"
-                android:onClick="test"
+                android:onClick="onClick"
                 android:layout_width="130dp"
-                android:layout_height="130dp" />
+                android:layout_height="130dp"
+                android:id="@+id/grayScale" />
 
             <Button
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:text="bottone2"/>
+                android:text="bottone2"
+                android:onClick="onClick"
+                android:id="@+id/ady"/>
             <Button
                 android:layout_width="130dp"
                 android:layout_height="130dp"
