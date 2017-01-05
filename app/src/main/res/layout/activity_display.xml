@@ -47,9 +47,10 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:clickable="true"
+            android:onClick="saveImage"
             app:fabSize="mini"
             app:srcCompat="@android:drawable/stat_sys_download_done"
-            android:id="@+id/floatingActionButton3"
+            android:id="@+id/saveImg"
             app:backgroundTint="@android:color/holo_blue_dark"
             />
 
@@ -81,7 +82,9 @@
             <Button
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:text="bottone3"/>
+                android:text="Pencil"
+                android:onClick="onClick"
+                android:id="@+id/pencil"/>
             <Button
                 android:layout_width="130dp"
                 android:layout_height="130dp"
