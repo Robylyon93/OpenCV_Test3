@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,13 +26,15 @@ public class DisplayActivity extends AppCompatActivity {
     private Uri photoUri;
     private Bitmap originalImg;
     private Bitmap newImage;
+    private FloatingActionButton saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
-
+        saveButton = (FloatingActionButton) findViewById(R.id.saveImg);
+        saveButton.setEnabled(false);
         imageView = (ImageView) findViewById(R.id.imageViewDisplay);
         Intent i = getIntent();
         photoUri = Uri.parse(i.getExtras().getString("photoUri"));
@@ -42,7 +45,7 @@ public class DisplayActivity extends AppCompatActivity {
     public void onClick(View v) throws FileNotFoundException {
 
         if(v.getId() == R.id.saveImg){
-            SaveImage();
+            this.SaveImage(this.newImage);
         }
         else {
 
@@ -59,6 +62,7 @@ public class DisplayActivity extends AppCompatActivity {
                 newImage = FilterUtils.pencilApply(originalImg);
             }
 
+            saveButton.setEnabled(true);
             imageView.setImageBitmap(newImage);
 //
 //          String destFolder = getCacheDir().getAbsolutePath();
@@ -78,20 +82,28 @@ public class DisplayActivity extends AppCompatActivity {
     }
 
 
-    private void SaveImage() {
+    private void SaveImage(Bitmap image) {
 
-        File myDir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), "ApeDemo");
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String fname = "JPEG_" + timeStamp + "_APE_";
-        File file = new File (myDir, fname);
-        if (file.exists ()) file.delete();
+        File direct = new File(Environment.getExternalStorageDirectory() + "/ApeDemo");
+
+        String fileName = "Test";
+
+        if (!direct.exists()) {
+            File myDir = new File("/sdcard/ApeDemo/");
+            myDir.mkdirs();
+        }
+
+        File file = new File(new File("/sdcard/ApeDemo/"), fileName);
+        if (file.exists()) {
+            file.delete();
+        }
         try {
             FileOutputStream out = new FileOutputStream(file);
-            newImage.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            image.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
-
+            // Forza il rescan dei media (per visualizzare nella galleria)
+            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
         } catch (Exception e) {
             e.printStackTrace();
         }

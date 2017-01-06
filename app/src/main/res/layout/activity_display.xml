@@ -27,16 +27,6 @@
         android:orientation="horizontal"
         android:layout_weight="0.3">
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:clickable="true"
-            app:fabSize="mini"
-            app:srcCompat="?attr/actionModeCloseDrawable"
-            android:id="@+id/floatingActionButton4"
-            app:backgroundTint="@android:color/holo_blue_dark" />
-
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -46,13 +36,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:clickable="true"
-            android:onClick="saveImage"
+            android:onClick="onClick"
             app:fabSize="mini"
             app:srcCompat="@android:drawable/stat_sys_download_done"
             android:id="@+id/saveImg"
             app:backgroundTint="@android:color/holo_blue_dark"
-            />
+            android:clickable="true" />
 
     </LinearLayout>
 
