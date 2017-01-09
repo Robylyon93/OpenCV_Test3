@@ -1,5 +1,6 @@
 package bicoccalab.opencv_test3;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -10,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -42,6 +44,12 @@ public class DisplayActivity extends AppCompatActivity {
         originalImg = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
     }
 
+    /**
+     * Metodo onClick in base al chiamante varia il tipo di operazione. Attualmente salvataggio e
+     * applicazione filtri.
+     * @param v view del bottone
+     * @throws FileNotFoundException
+     */
     public void onClick(View v) throws FileNotFoundException {
 
         if(v.getId() == R.id.saveImg){
@@ -65,6 +73,8 @@ public class DisplayActivity extends AppCompatActivity {
             saveButton.setEnabled(true);
             imageView.setImageBitmap(newImage);
 //
+//          Commentati per ora nessun filtro ha bisogno della activity opzioni.
+//
 //          String destFolder = getCacheDir().getAbsolutePath();
 //
 //          FileOutputStream out = new FileOutputStream(destFolder + "/temp_image.png");
@@ -81,19 +91,30 @@ public class DisplayActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Salvataggio dell'immagine che viene passata per parametro.
+     * La cartella di salvataggio è attualmente sdcard/Pictures/ApeDemo
+     * @param image Bitmap da salvare, verrà compressa come jpeg
+     */
 
     private void SaveImage(Bitmap image) {
 
-        File direct = new File(Environment.getExternalStorageDirectory() + "/ApeDemo");
+        File direct = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "ApeDemo");  //Environment.getExternalStorageDirectory() + "/ApeDemo");
 
-        String fileName = "Test";
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String fileName = "JPEG_" + timeStamp + "_APE.jpeg";
+        // String fileName = "Test.jpeg";
 
         if (!direct.exists()) {
-            File myDir = new File("/sdcard/ApeDemo/");
-            myDir.mkdirs();
+
+            direct.mkdir();
+
+            //File myDir = new File("/sdcard/Picture/ApeDemo/");
+            //myDir.mkdirs();
         }
 
-        File file = new File(new File("/sdcard/ApeDemo/"), fileName);
+        File file = new File(direct, fileName);
         if (file.exists()) {
             file.delete();
         }
@@ -104,6 +125,15 @@ public class DisplayActivity extends AppCompatActivity {
             out.close();
             // Forza il rescan dei media (per visualizzare nella galleria)
             sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
+
+            // toast di notifica salvataggio riuscito
+            Context context = getApplicationContext();
+            CharSequence text = "Image saved!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
