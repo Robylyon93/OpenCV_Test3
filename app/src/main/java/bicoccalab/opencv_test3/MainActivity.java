@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
@@ -26,8 +27,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnOpenCamera;
-    Button btnOpenGallery;
+    FloatingActionButton btnOpenCamera;
+    FloatingActionButton btnOpenGallery;
     Uri photoUri;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -51,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnOpenCamera = (Button) findViewById(R.id.opencamera_btn);
-        btnOpenGallery = (Button) findViewById(R.id.opengallery_btn);
+        btnOpenCamera = (FloatingActionButton) findViewById(R.id.opencamera_btn);
+        btnOpenGallery = (FloatingActionButton) findViewById(R.id.opengallery_btn);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
                 PackageManager.PERMISSION_GRANTED) {

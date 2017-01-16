@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,25 +11,51 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="bicoccalab.opencv_test3.MainActivity">
+    tools:context="bicoccalab.opencv_test3.MainActivity"
+    android:weightSum="3">
 
-    <Button
+    <ImageButton
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/ic_logo_title_small"
+        android:id="@+id/imageButton"
         android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_camera"
         android:id="@+id/opencamera_btn"
-        android:drawableStart="@drawable/img_camera_small"
-        android:gravity="center_vertical"
-        android:layout_height="0dp"
+        android:layout_gravity="center"
+        app:backgroundTint="@android:color/background_light"
+        app:rippleColor="@android:color/transparent"
+        app:elevation="9dp"
+        android:scaleType="centerInside"
         android:onClick="openCamera"
-        android:text="@string/opencamera_btn" />
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/opengallery_btn"
-        android:drawableStart="@drawable/img_gallery_small"
-        android:text="@string/opengallery_btn"
-        android:gravity="center_vertical"
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="120dp"
         android:layout_height="0dp"
-        android:onClick="openGallery"/>
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_gallery"
+        android:id="@+id/opengallery_btn"
+        android:layout_gravity="center"
+        app:backgroundTint="@android:color/background_light"
+        app:rippleColor="@android:color/transparent"
+        app:elevation="9dp"
+        android:onClick="openGallery"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"/>
+
+
 </LinearLayout>
