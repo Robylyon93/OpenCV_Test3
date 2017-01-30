@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -62,9 +61,9 @@ public class DisplayActivity extends AppCompatActivity {
 
                 newImage = FilterUtils.grayApply(originalImg);
 
-            } else if (v.getId() == R.id.stylization) {
+            } else if (v.getId() == R.id.cartoonize) {
 
-                newImage = FilterUtils.stylizationApply(originalImg);
+                newImage = FilterUtils.cartoonizeApply(originalImg);
 
             } else if (v.getId() == R.id.pencil) {
                 newImage = FilterUtils.pencilApply(originalImg);

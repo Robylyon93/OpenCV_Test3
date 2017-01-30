@@ -65,9 +65,9 @@
             <Button
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:text="Comic"
+                android:text="Cartoon"
                 android:onClick="onClick"
-                android:id="@+id/stylization"/>
+                android:id="@+id/cartoonize"/>
             <Button
                 android:layout_width="130dp"
                 android:layout_height="130dp"
