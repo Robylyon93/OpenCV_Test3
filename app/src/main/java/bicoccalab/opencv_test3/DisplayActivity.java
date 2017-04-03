@@ -37,8 +37,7 @@ public class DisplayActivity extends AppCompatActivity {
         saveButton = (FloatingActionButton) findViewById(R.id.saveImg);
         saveButton.setEnabled(false);
         imageView = (ImageView) findViewById(R.id.imageViewDisplay);
-        Intent i = getIntent();
-        photoUri = Uri.parse(i.getExtras().getString("photoUri"));
+        photoUri = Uri.parse(getIntent().getExtras().getString("photoUri"));
         imageView.setImageURI(photoUri);
         originalImg = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
     }
@@ -53,6 +52,7 @@ public class DisplayActivity extends AppCompatActivity {
 
         if(v.getId() == R.id.saveImg){
             this.SaveImage(this.newImage);
+            //this.ShareImage();
         }
         else {
 
@@ -88,6 +88,13 @@ public class DisplayActivity extends AppCompatActivity {
 //          startActivity(optionsIntent);
 
         }
+    }
+
+    private void ShareImage() {
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("image/jpg");
+        sharingIntent.putExtra(Intent.EXTRA_STREAM, photoUri);
+        startActivity(Intent.createChooser(sharingIntent, "Share image using"));
     }
 
     /**

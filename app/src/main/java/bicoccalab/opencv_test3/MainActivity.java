@@ -14,7 +14,6 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton btnOpenCamera;
     FloatingActionButton btnOpenGallery;
     Uri photoUri;
+    String photoPath;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
          */
         if (requestCode == TAKE_PIC) {
             if (resultCode == RESULT_OK) {
-                displayPhotoIntent.putExtra("photoUri", photoUri.toString());
+                displayPhotoIntent.putExtra("photoUri", photoPath);
                 startActivity(displayPhotoIntent); // si può scirvere una volta sola fuori dall'if!
             }
         }
@@ -168,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File image = File.createTempFile(imageFileName, ".jpg", mediaStorageDir);
+        photoPath = image.getAbsolutePath();
         return image;
     }
 
